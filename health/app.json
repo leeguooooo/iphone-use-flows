@@ -1,0 +1,7 @@
+{
+  "id": "health",
+  "bundle": "com.apple.Health",
+  "name": "Apple Health",
+  "category": "health",
+  "description": "Apple Health has no API. These flows drive the app UI to export or read on-phone health data."
+}

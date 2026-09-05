@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "name": "Open Health",
+  "description": "Launch Apple Health and wait until the app is in the foreground.",
+  "app": "com.apple.Health",
+  "category": "health",
+  "risk": "navigation",
+  "steps": [
+    { "kind": "launch_app", "bundle": "com.apple.Health", "after_ms": 300 },
+    {
+      "kind": "wait_for",
+      "expect": { "present": [ { "kind": "Application" } ] },
+      "timeout_ms": 6000,
+      "poll_ms": 200
+    }
+  ]
+}

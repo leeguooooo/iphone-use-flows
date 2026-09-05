@@ -1,0 +1,7 @@
+{
+  "id": "settings",
+  "bundle": "com.apple.Preferences",
+  "name": "Settings",
+  "category": "system",
+  "description": "The iOS Settings app."
+}

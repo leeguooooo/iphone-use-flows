@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "name": "Open Settings",
+  "description": "Launch the Settings app by bundle id and wait until it is in the foreground.",
+  "app": "com.apple.Preferences",
+  "category": "system",
+  "risk": "navigation",
+  "steps": [
+    {
+      "kind": "launch_app",
+      "bundle": "com.apple.Preferences",
+      "after_ms": 300
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "Application"
+          }
+        ]
+      },
+      "timeout_ms": 5000,
+      "poll_ms": 200
+    }
+  ]
+}

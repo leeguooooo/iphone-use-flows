@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "name": "Go Home",
+  "description": "Return to the Home Screen. Use it to reset the phone to a known state before another flow.",
+  "app": "com.apple.springboard",
+  "category": "system",
+  "risk": "navigation",
+  "tags": [
+    "reset"
+  ],
+  "steps": [
+    {
+      "kind": "shortcut",
+      "name": "home",
+      "after_ms": 400
+    }
+  ],
+  "verified_on": [
+    {
+      "device": "iPhone 17 Pro Max",
+      "ios": "26",
+      "date": "2026-09-05"
+    }
+  ]
+}

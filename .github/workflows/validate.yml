@@ -1,0 +1,40 @@
+name: validate flows
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: index.json is current
+        run: python3 scripts/build-index.py --check
+      - name: fetch iphone-use (strict validator)
+        uses: actions/checkout@v4
+        with:
+          repository: leeguooooo/iphone-use
+          path: .iphone-use
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: .iphone-use
+      - name: build iphone-use-mcp
+        run: cargo build -p iphone-use-mcp --manifest-path .iphone-use/Cargo.toml
+      - name: every flow passes `flow validate`
+        run: |
+          set -euo pipefail
+          MCP=.iphone-use/target/debug/iphone-use-mcp
+          chmod 600 */*.json
+          for f in $(python3 -c 'import json;print("\n".join(x["path"] for x in json.load(open("index.json"))["flows"]))'); do
+            echo "== $f"; "$MCP" flow validate "$f"
+          done
+      - name: `flow update` from this checkout installs everything
+        run: |
+          set -euo pipefail
+          MCP=.iphone-use/target/debug/iphone-use-mcp
+          export IPHONE_USE_FLOWS_SOURCE="$PWD" IPHONE_USE_FLOWS_DIR="$RUNNER_TEMP/flows"
+          "$MCP" flow update
+          "$MCP" flow list

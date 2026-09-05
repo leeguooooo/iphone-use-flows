@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "name": "Open Spotlight",
+  "description": "Return home, open Spotlight, and require its text field before finishing.",
+  "app": "com.apple.springboard",
+  "category": "system",
+  "risk": "navigation",
+  "tags": [
+    "search"
+  ],
+  "steps": [
+    {
+      "kind": "shortcut",
+      "name": "home",
+      "after_ms": 300
+    },
+    {
+      "kind": "shortcut",
+      "name": "spotlight"
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "TextField"
+          }
+        ]
+      },
+      "timeout_ms": 3000,
+      "poll_ms": 100
+    }
+  ],
+  "verified_on": [
+    {
+      "device": "iPhone 17 Pro Max",
+      "ios": "26",
+      "date": "2026-09-05"
+    }
+  ]
+}

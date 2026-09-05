@@ -1,0 +1,7 @@
+{
+  "id": "system",
+  "bundle": "com.apple.springboard",
+  "name": "iOS system (Home Screen, Spotlight)",
+  "category": "system",
+  "description": "Flows that only use system surfaces: Home, Spotlight search, app launch. Locale-independent."
+}
