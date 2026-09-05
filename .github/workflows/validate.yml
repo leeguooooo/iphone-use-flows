@@ -23,7 +23,7 @@ jobs:
           workspaces: .iphone-use
       - name: build iphone-use-mcp
         run: cargo build -p iphone-use-mcp --manifest-path .iphone-use/Cargo.toml
-      - name: every flow passes `flow validate`
+      - name: "every flow passes flow validate"
         run: |
           set -euo pipefail
           MCP=.iphone-use/target/debug/iphone-use-mcp
@@ -31,7 +31,7 @@ jobs:
           for f in $(python3 -c 'import json;print("\n".join(x["path"] for x in json.load(open("index.json"))["flows"]))'); do
             echo "== $f"; "$MCP" flow validate "$f"
           done
-      - name: `flow update` from this checkout installs everything
+      - name: "flow update from this checkout installs everything"
         run: |
           set -euo pipefail
           MCP=.iphone-use/target/debug/iphone-use-mcp
