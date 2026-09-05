@@ -131,7 +131,7 @@
     {
       "id": "system/spotlight-search",
       "path": "system/spotlight-search.json",
-      "sha256": "3df5d97fdd110fa78db6607b00d4133736cdb683c5d9e97317427daaa1c6394c",
+      "sha256": "26e17bacd11dfd8a24028332a0cd520a0b69736c4b480b6e7ca908944d46dfe1",
       "name": "Spotlight search",
       "description": "Return home, open Spotlight, type the query supplied for this run, and submit it. Spotlight opens the top hit (an app, contact, or web result), so read /agent/elements afterwards to see where you landed.",
       "app": "com.apple.springboard",

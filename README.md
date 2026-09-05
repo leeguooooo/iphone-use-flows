@@ -62,7 +62,7 @@ optional metadata, all validated by the CLI:
 | `tags` | up to 8 slugs; `draft` marks a file that has not run on hardware |
 | `verified_on` | `[{"device","ios","app_version","date"}]` — runs that proved this exact file. `app_version` is the **iOS version for Apple system apps** (their own version is a placeholder). Empty shows as `verified: no` |
 | `app_version_min` | lowest app/iOS version the flow is known to work on; installed versions below it show `compat: incompatible` |
-| `example_inputs` | harmless values for the declared inputs, so the nightly canary can run a parameterized flow unattended. **Needs iphone-use > 0.6.0**; older `flow update` rejects unknown fields, so add it only once the release that understands it is out |
+| `example_inputs` | harmless values for the declared inputs, so the nightly canary can run a parameterized flow unattended. needs iphone-use ≥ 0.6.2 (older `flow update` rejects unknown fields) |
 
 What a flow may and may not do (the CLI enforces the mechanical parts):
 

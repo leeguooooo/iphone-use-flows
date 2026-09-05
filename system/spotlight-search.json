@@ -15,6 +15,9 @@
       "required": true
     }
   },
+  "example_inputs": {
+    "query": "时钟"
+  },
   "steps": [
     {
       "kind": "shortcut",
