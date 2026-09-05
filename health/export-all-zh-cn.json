@@ -1,0 +1,118 @@
+{
+  "app": "com.apple.Health",
+  "category": "health",
+  "description": "中文界面。启动「健康」，在「摘要」页打开右上角「资料」，滚动到底部，点「导出所有健康数据」再点确认「导出」。手机随后打包 zip 约 1 分钟并弹出共享面板；之后读取 /agent/elements 处理共享面板（存储到「文件」）。任一标签缺失或重复时不会点击（fail-closed）。",
+  "locale": "zh-CN",
+  "name": "导出全部健康数据（发起）",
+  "risk": "navigation",
+  "steps": [
+    {
+      "after_ms": 500,
+      "bundle": "com.apple.Health",
+      "kind": "launch_app"
+    },
+    {
+      "expect": {
+        "application": "健康",
+        "present": [
+          {
+            "kind": "Button",
+            "label": "资料"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "poll_ms": 250,
+      "timeout_ms": 8000
+    },
+    {
+      "after_ms": 800,
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Button",
+        "label": "资料"
+      }
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "完成"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "poll_ms": 200,
+      "timeout_ms": 5000
+    },
+    {
+      "after_ms": 400,
+      "dx": 0,
+      "dy": 80,
+      "kind": "scroll",
+      "x": 0.5,
+      "y": 0.6
+    },
+    {
+      "after_ms": 400,
+      "dx": 0,
+      "dy": 80,
+      "kind": "scroll",
+      "x": 0.5,
+      "y": 0.6
+    },
+    {
+      "after_ms": 600,
+      "dx": 0,
+      "dy": 80,
+      "kind": "scroll",
+      "x": 0.5,
+      "y": 0.6
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "label": "导出所有健康数据"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "poll_ms": 200,
+      "timeout_ms": 4000
+    },
+    {
+      "after_ms": 800,
+      "kind": "tap_label",
+      "label": "导出所有健康数据"
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "导出"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "poll_ms": 200,
+      "timeout_ms": 5000
+    },
+    {
+      "after_ms": 1000,
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Button",
+        "label": "导出"
+      }
+    }
+  ],
+  "tags": [
+    "export",
+    "backup",
+    "draft"
+  ],
+  "version": 1
+}
