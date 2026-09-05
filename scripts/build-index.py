@@ -47,7 +47,7 @@ def main() -> None:
         app = load_json(app_json)
         if app.get("id") != app_dir.name:
             fail(f"{app_dir.name}/app.json id must be {app_dir.name!r}")
-        apps.append({k: app[k] for k in ("id", "bundle", "name", "category", "description") if k in app})
+        apps.append({k: app[k] for k in ("id", "bundle", "name", "category", "description", "aliases") if k in app})
         for flow_path in sorted(app_dir.glob("*.json")):
             if flow_path.name == "app.json":
                 continue

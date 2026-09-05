@@ -109,21 +109,33 @@
       "bundle": "com.apple.Health",
       "name": "Apple Health",
       "category": "health",
-      "description": "Apple Health has no API. These flows drive the app UI to export or read on-phone health data."
+      "description": "Apple Health has no API. These flows drive the app UI to export or read on-phone health data.",
+      "aliases": [
+        "Health",
+        "健康"
+      ]
     },
     {
       "id": "settings",
       "bundle": "com.apple.Preferences",
       "name": "Settings",
       "category": "system",
-      "description": "The iOS Settings app."
+      "description": "The iOS Settings app.",
+      "aliases": [
+        "Settings",
+        "设置"
+      ]
     },
     {
       "id": "system",
       "bundle": "com.apple.springboard",
       "name": "iOS system (Home Screen, Spotlight)",
       "category": "system",
-      "description": "Flows that only use system surfaces: Home, Spotlight search, app launch. Locale-independent."
+      "description": "Flows that only use system surfaces: Home, Spotlight search, app launch. Locale-independent.",
+      "aliases": [
+        "SpringBoard",
+        "主屏幕"
+      ]
     }
   ]
 }

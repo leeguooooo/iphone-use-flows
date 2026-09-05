@@ -1,0 +1,22 @@
+name: Flow request
+description: A repeated phone task that should be one command
+title: "flow request: <app> — <task>"
+labels: [new-flow]
+body:
+  - type: input
+    id: app
+    attributes: { label: App (bundle id if known), placeholder: com.apple.Health }
+    validations: { required: true }
+  - type: textarea
+    id: task
+    attributes: { label: The task, description: What the flow should do, start state, end state, inputs it needs. }
+    validations: { required: true }
+  - type: input
+    id: locale
+    attributes: { label: UI language you use, placeholder: zh-CN }
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk
+      options: [read_only, navigation, side_effect]
+    validations: { required: true }

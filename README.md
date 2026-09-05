@@ -63,7 +63,15 @@ repository that runs on your Mac or phone. Only this official source is supporte
 CLI has no `sources add`. `IPHONE_USE_FLOWS_SOURCE=<dir|url>` overrides it for
 development.
 
-## Contributing
+## Contributing and reporting
+
+`flow publish` opens the PR for you (fork, branch, `app.json`, `index.json`, PR body);
+`flow report` files an issue for a flow that stopped working, with the failure redacted
+of private content. Agents using the bundled MCP get `phone_flow_publish` /
+`phone_flow_report` and are told by `phone_elements` which installed flows fit the app
+on screen (via each `app.json`'s `aliases`).
+
+### Adding a flow by hand
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Short version: record with the browser
 **流程** panel or write JSON by hand, `flow validate` it, run it on a real phone, fill

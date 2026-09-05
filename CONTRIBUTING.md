@@ -20,8 +20,23 @@
    IPHONE_USE_FLOWS_DIR=/tmp/flows PHONE_REMOTE_TOKEN=… iphone-use-mcp flow run <app>/<flow>
    ```
    Then fill in `verified_on` (device, iOS, app version, date) and drop the `draft` tag.
-5. **Open a PR.** CI checks that `index.json` is current and that every flow passes the
-   CLI validator. Say in the PR which device and locale you verified on.
+5. **Open a PR** — one command does the fork, branch, `app.json`, index rebuild, and PR:
+   ```bash
+   iphone-use-mcp flow publish <flow>.json --as <app>/<flow> --alias Health --alias 健康 \
+     --note "iPhone 17 Pro Max · iOS 26 · zh-CN, ran 3×"
+   ```
+   (`aliases` are the app's foreground label in each language; they let the MCP surface
+   your flow the moment an agent looks at that app.) CI checks that `index.json` is
+   current and that every flow passes the CLI validator. An unverified file opens as a
+   draft PR.
+
+## Reporting a broken flow
+
+`iphone-use-mcp flow report <app>/<flow> --result @run.json --note "..."` files an issue
+with the failed step and a redacted daemon result (typed text, screen labels, and element
+lists are stripped). From an MCP client, `phone_flow_report` reuses the last failed
+`phone_flow_run` automatically. Issues without a flow id or with private content are
+closed.
 
 ## What will not be merged
 

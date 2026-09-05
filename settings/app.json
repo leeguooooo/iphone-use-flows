@@ -3,5 +3,9 @@
   "bundle": "com.apple.Preferences",
   "name": "Settings",
   "category": "system",
-  "description": "The iOS Settings app."
+  "description": "The iOS Settings app.",
+  "aliases": [
+    "Settings",
+    "设置"
+  ]
 }

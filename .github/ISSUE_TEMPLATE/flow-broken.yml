@@ -1,0 +1,30 @@
+name: Flow broken
+description: An installed flow stopped working (label changed, app updated, locale mismatch)
+title: "<app>/<flow> failed at step N"
+labels: [flow-broken]
+body:
+  - type: input
+    id: flow
+    attributes: { label: Flow id, placeholder: health/export-all }
+    validations: { required: true }
+  - type: textarea
+    id: result
+    attributes:
+      label: Daemon result
+      description: The JSON printed by `flow run` / `phone_flow_run`. Strip typed text and screen labels that contain private content.
+      render: json
+  - type: input
+    id: device
+    attributes: { label: Device / iOS / app version / UI language, placeholder: iPhone 17 Pro Max · iOS 26 · Health 26.0 · zh-CN }
+  - type: textarea
+    id: expected
+    attributes: { label: What you expected vs what the phone showed }
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before filing
+      options:
+        - label: The phone was unlocked, drivable, and on the right app/locale (not a daemon or lock problem)
+          required: true
+        - label: No password, code, token, or private message content is in this issue
+          required: true
