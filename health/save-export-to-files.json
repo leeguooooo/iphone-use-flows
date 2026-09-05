@@ -1,26 +1,59 @@
 {
   "version": 1,
   "name": "Save Health export to Files",
-  "description": "English UI. Run after health/export-all once the share sheet is visible (poll /agent/elements for 'Save to Files'; the zip takes ~1 minute). Taps 'Save to Files' then 'Save', which stores the zip in the last-used Files location (iCloud Drive syncs it to the Mac under ~/Library/Mobile Documents/com~apple~CloudDocs/).",
+  "description": "English UI. Run after health/export-all once the share sheet is visible (the zip takes ~1 minute; this flow times out on step 1 until then — rerun). Taps 'Save to Files', then the Files picker's Save button. That picker's accessibility tree is heavy and WDA source reads often time out, so Save is a top-right coordinate tap (0.89, 0.096) guarded by a postcondition: the picker's Save button is gone (true after a save and while a replace prompt covers it). If the last step times out and a 'Replace Existing Item?' alert is showing, answer it with the native alert route (Keep Both), as health/export-keep-both does in zh-CN. English labels still need a run; the zh-CN twin is hardware-proven.",
   "app": "com.apple.Health",
   "category": "health",
   "risk": "navigation",
   "locale": "en",
-  "tags": ["export", "backup", "draft"],
+  "tags": [
+    "export",
+    "backup",
+    "draft"
+  ],
   "steps": [
     {
       "kind": "wait_for",
-      "expect": { "present": [ { "label": "Save to Files" } ] },
+      "expect": {
+        "present": [
+          {
+            "kind": "Cell",
+            "label": "Save to Files"
+          }
+        ]
+      },
       "timeout_ms": 10000,
       "poll_ms": 500
     },
-    { "kind": "tap_label", "label": "Save to Files", "after_ms": 1200 },
+    {
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Cell",
+        "label": "Save to Files"
+      },
+      "after_ms": 1500
+    },
+    {
+      "kind": "pause",
+      "ms": 2500
+    },
+    {
+      "kind": "tap",
+      "x": 0.89,
+      "y": 0.096,
+      "after_ms": 2000
+    },
     {
       "kind": "wait_for",
-      "expect": { "present": [ { "kind": "Button", "label": "Save" } ] },
+      "expect": {
+        "absent": [
+          {
+            "identifier": "DOCPicker.actionButton"
+          }
+        ]
+      },
       "timeout_ms": 8000,
-      "poll_ms": 250
-    },
-    { "kind": "tap_locator", "locator": { "kind": "Button", "label": "Save" }, "after_ms": 1000 }
+      "poll_ms": 500
+    }
   ]
 }
