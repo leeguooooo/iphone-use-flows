@@ -52,8 +52,12 @@
   "verified_on": [
     {
       "device": "iPhone 17 Pro Max",
-      "ios": "26",
-      "date": "2026-09-05"
+      "ios": "27.0",
+      "date": "2026-09-05",
+      "app_version": "27.0"
     }
-  ]
+  ],
+  "example_inputs": {
+    "query": "时钟"
+  }
 }

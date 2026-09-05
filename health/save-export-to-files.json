@@ -9,7 +9,8 @@
   "tags": [
     "export",
     "backup",
-    "draft"
+    "draft",
+    "no-canary"
   ],
   "steps": [
     {

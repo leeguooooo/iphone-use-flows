@@ -8,7 +8,8 @@
   "locale": "zh-CN",
   "tags": [
     "export",
-    "backup"
+    "backup",
+    "no-canary"
   ],
   "steps": [
     {
@@ -37,8 +38,8 @@
   "verified_on": [
     {
       "device": "iPhone 17 Pro Max",
-      "ios": "26",
-      "app_version": "Health (iOS 26)",
+      "ios": "27.0",
+      "app_version": "27.0",
       "date": "2026-09-05"
     }
   ]
