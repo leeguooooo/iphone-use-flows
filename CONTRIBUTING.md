@@ -7,6 +7,9 @@
 2. **Compile it into a flow file** under `<app>/<flow>.json`. If `<app>/app.json` does
    not exist yet, add it (`id` = directory name, `bundle`, `name`, `category`).
    Add `app`, `category`, `risk`, `locale`; put `"draft"` in `tags` until step 4 is done.
+   If the flow has inputs, add `example_inputs` with harmless values so the nightly canary
+   can run it; if it changes anything on the device (creates files, sends, toggles), tag it
+   `no-canary`. Set `app_version_min` only when you know an older version lacks the UI.
 3. **Validate offline:**
    ```bash
    chmod 600 <app>/<flow>.json
@@ -20,6 +23,7 @@
    IPHONE_USE_FLOWS_DIR=/tmp/flows PHONE_REMOTE_TOKEN=… iphone-use-mcp flow run <app>/<flow>
    ```
    Then fill in `verified_on` (device, iOS, app version, date) and drop the `draft` tag.
+   For Apple system apps put the **iOS version** in `app_version`; that is what compat compares.
 5. **Open a PR** — one command does the fork, branch, `app.json`, index rebuild, and PR:
    ```bash
    iphone-use-mcp flow publish <flow>.json --as <app>/<flow> --alias Health --alias 健康 \

@@ -20,7 +20,7 @@ that is on screen.
 
 | app | flow | verified on | does |
 |---|---|---|---|
-| `system` | `home` | iPhone 17 Pro Max · iOS 26 | back to the Home Screen |
+| `system` | `home` | iPhone 17 Pro Max · iOS 27.0 | back to the Home Screen |
 | `system` | `open-spotlight` | same | Home → Spotlight, waits for the text field |
 | `system` | `spotlight-search` | same | Spotlight, types `query`, submits (opens the top hit) |
 | `settings` | `open` | same | launches Settings |
@@ -60,7 +60,9 @@ optional metadata, all validated by the CLI:
 | `risk` | `read_only` · `navigation` · `side_effect`. A `side_effect` flow (send, publish, pay, delete) refuses to run without `--confirm` / `confirm=true` |
 | `locale` | UI language the labels were recorded under (`en`, `zh-CN`). A flow recorded in one language fails closed in another: zero matches, no tap |
 | `tags` | up to 8 slugs; `draft` marks a file that has not run on hardware |
-| `verified_on` | `[{"device","ios","app_version","date"}]` — runs that proved this exact file. Empty shows as `verified: no` |
+| `verified_on` | `[{"device","ios","app_version","date"}]` — runs that proved this exact file. `app_version` is the **iOS version for Apple system apps** (their own version is a placeholder). Empty shows as `verified: no` |
+| `app_version_min` | lowest app/iOS version the flow is known to work on; installed versions below it show `compat: incompatible` |
+| `example_inputs` | harmless values for the declared inputs, so the nightly canary can run a parameterized flow unattended. **Needs iphone-use > 0.6.0**; older `flow update` rejects unknown fields, so add it only once the release that understands it is out |
 
 What a flow may and may not do (the CLI enforces the mechanical parts):
 
@@ -76,6 +78,19 @@ What a flow may and may not do (the CLI enforces the mechanical parts):
 - Typed text is a named `input`; the file never contains a value, and an input must
   never carry a password, one-time code, session token, or private message.
 - Stop at the first failed step; never retry inside the flow.
+
+## Staying valid when apps update
+
+The CLI compares each flow's `verified_on` version with what the phone has installed and
+shows a `compat` verdict in `flow list` / `phone_flow_list` / `phone_elements`:
+`verified`, `untested-newer` (run it, then publish the refreshed `verified_on`),
+`incompatible`, `broken`, `needs-verification`, `draft`, `unknown`. Two tags drive the
+negative verdicts: `broken` (a report confirmed the flow fails) and `needs-verification`
+(set automatically when the nightly canary fails). A nightly job on a phone-owning Mac
+(`scripts/flow-reverify.py` in iphone-use) re-runs every verified `read_only` /
+`navigation` flow that is not tagged `no-canary`, refreshes `verified_on`, tags failures,
+and opens one `reverify/<date>` PR here. Tag flows with real side effects on the device
+(the Health export creates a 50 MB zip) `no-canary`.
 
 ## Trust
 
@@ -93,7 +108,7 @@ One command opens the pull request — fork if needed, branch, `app.json` for a 
 
 ```bash
 iphone-use-mcp flow publish my-flow.json --as <app>/<flow> --alias Health --alias 健康 \
-  --note "iPhone 17 Pro Max · iOS 26 · zh-CN, ran 3×"
+  --note "iPhone 17 Pro Max · iOS 27.0 · zh-CN, ran 3×"
 ```
 
 A file without `verified_on` opens as a draft PR. CI checks that `index.json` is current
