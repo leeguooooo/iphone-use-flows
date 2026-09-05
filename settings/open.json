@@ -23,5 +23,12 @@
       "timeout_ms": 5000,
       "poll_ms": 200
     }
+  ],
+  "verified_on": [
+    {
+      "device": "iPhone 17 Pro Max",
+      "ios": "26",
+      "date": "2026-09-05"
+    }
   ]
 }

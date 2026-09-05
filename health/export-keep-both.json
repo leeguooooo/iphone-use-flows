@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "name": "导出后「替换现有项目」选保留两者",
+  "description": "仅在 health/save-export-to-files-zh-cn 之后弹出「替换现有项目」系统弹窗时运行：按「保留两者」，然后确认「文件」选位置页已关闭、回到「健康」资料页。没有弹窗时不会动作（fail-closed）。",
+  "app": "com.apple.Health",
+  "category": "health",
+  "risk": "navigation",
+  "locale": "zh-CN",
+  "tags": [
+    "export",
+    "backup"
+  ],
+  "steps": [
+    {
+      "kind": "alert",
+      "button": "保留两者",
+      "after_ms": 2000
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "identifier": "UIA.Health.ExportAllHealthData"
+          }
+        ],
+        "absent": [
+          {
+            "identifier": "DOCPicker.actionButton"
+          }
+        ]
+      },
+      "timeout_ms": 8000,
+      "poll_ms": 500
+    }
+  ],
+  "verified_on": [
+    {
+      "device": "iPhone 17 Pro Max",
+      "ios": "26",
+      "app_version": "Health (iOS 26)",
+      "date": "2026-09-05"
+    }
+  ]
+}

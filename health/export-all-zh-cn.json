@@ -1,15 +1,14 @@
 {
   "version": 1,
-  "name": "Export all Health data (request)",
-  "description": "English UI. Launch Health, open the profile page from the Summary tab, scroll to the bottom, tap 'Export All Health Data', and press 'Export' on the system alert through the native alert route (the alert does not reliably appear in the element tree, so no wait_for gates it). The phone then packs a zip (~1 minute) and shows the share sheet; continue with health/save-export-to-files. Locators use Health's stable accessibility identifiers where they exist; only the Profile button and the alert button are label-based. Fails closed if a label is missing or ambiguous. Hardware-proven in zh-CN as health/export-all-zh-cn; the English labels still need a run.",
+  "name": "导出全部健康数据（发起）",
+  "description": "中文界面。启动「健康」，在「摘要」页打开右上角「资料」，滚动到底部，点「导出所有健康数据」，在系统确认框按「导出」（原生 alert 路径；该弹窗不一定出现在元素树里，所以不用 wait_for 等它）。手机随后打包 zip（约 1 分钟）并弹出共享面板；接着运行 health/save-export-to-files-zh-cn，或读取 /agent/elements 自行处理。任一标签缺失或重复时不会点击（fail-closed）。",
   "app": "com.apple.Health",
   "category": "health",
   "risk": "navigation",
-  "locale": "en",
+  "locale": "zh-CN",
   "tags": [
     "export",
-    "backup",
-    "draft"
+    "backup"
   ],
   "steps": [
     {
@@ -20,7 +19,7 @@
     {
       "kind": "wait_for",
       "expect": {
-        "application": "Health",
+        "application": "健康",
         "present": [
           {
             "identifier": "UIA.Health.Tab.Summary"
@@ -43,7 +42,7 @@
         "present": [
           {
             "kind": "Button",
-            "label": "Profile"
+            "label": "资料"
           }
         ]
       },
@@ -54,7 +53,7 @@
       "kind": "tap_locator",
       "locator": {
         "kind": "Button",
-        "label": "Profile"
+        "label": "资料"
       },
       "after_ms": 800
     },
@@ -119,8 +118,16 @@
     },
     {
       "kind": "alert",
-      "button": "Export",
+      "button": "导出",
       "after_ms": 1000
+    }
+  ],
+  "verified_on": [
+    {
+      "device": "iPhone 17 Pro Max",
+      "ios": "26",
+      "app_version": "Health (iOS 26)",
+      "date": "2026-09-05"
     }
   ]
 }

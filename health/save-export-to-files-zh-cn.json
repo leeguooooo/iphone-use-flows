@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "name": "把健康数据导出存到「文件」",
+  "description": "中文界面。在 health/export-all-zh-cn 之后运行：等共享面板出现（打包约 1 分钟；面板出现前本 flow 会在第 1 步超时，稍后重跑即可），点「保存到“文件”」，再按「文件」选位置页右上角的「保存」。这一页的辅助功能树很重，WDA 读取经常超时，所以「保存」用屏幕右上角坐标 (0.89, 0.096) 点按，并以选位置页的「保存」按钮消失作为后置条件（保存成功或弹出替换提示都满足）。zip 存到上次使用的位置（默认 iCloud云盘 根目录，Mac 上在 ~/Library/Mobile Documents/com~apple~CloudDocs/ 同步出现，文件名 导出.zip）。如果最后一步超时且屏幕上是「替换现有项目」系统弹窗（该位置已有同名文件），运行 health/export-keep-both。",
+  "app": "com.apple.Health",
+  "category": "health",
+  "risk": "navigation",
+  "locale": "zh-CN",
+  "tags": [
+    "export",
+    "backup"
+  ],
+  "steps": [
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "Cell",
+            "label": "保存到“文件”"
+          }
+        ]
+      },
+      "timeout_ms": 10000,
+      "poll_ms": 500
+    },
+    {
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Cell",
+        "label": "保存到“文件”"
+      },
+      "after_ms": 1500
+    },
+    {
+      "kind": "pause",
+      "ms": 2500
+    },
+    {
+      "kind": "tap",
+      "x": 0.89,
+      "y": 0.096,
+      "after_ms": 2000
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "absent": [
+          {
+            "identifier": "DOCPicker.actionButton"
+          }
+        ]
+      },
+      "timeout_ms": 8000,
+      "poll_ms": 500
+    }
+  ],
+  "verified_on": [
+    {
+      "device": "iPhone 17 Pro Max",
+      "ios": "26",
+      "app_version": "Health (iOS 26)",
+      "date": "2026-09-05"
+    }
+  ]
+}
