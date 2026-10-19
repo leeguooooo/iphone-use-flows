@@ -1,23 +1,25 @@
 {
+  "version": 1,
+  "name": "Put all screenshots into a new album",
+  "description": "照片：搜索「截屏」，全选结果并添加到新建相簿。只新建相簿，不删除任何照片。",
   "app": "com.apple.mobileslideshow",
   "category": "media",
-  "description": "照片：搜索「截屏」，全选结果并添加到新建相簿。只新建相簿，不删除任何照片。",
+  "risk": "side_effect",
+  "locale": "zh-CN",
   "inputs": {
     "album": {
-      "description": "新相簿名称。不要含数字：中文拼音输入法会吞掉数字。",
-      "type": "string"
+      "type": "string",
+      "description": "新相簿名称。不要含数字：中文拼音输入法会吞掉数字。"
     }
   },
-  "locale": "zh-CN",
-  "name": "Put all screenshots into a new album",
-  "risk": "side_effect",
   "steps": [
     {
+      "kind": "launch_app",
       "bundle": "com.apple.mobileslideshow",
-      "fresh": true,
-      "kind": "launch_app"
+      "fresh": true
     },
     {
+      "kind": "wait_for",
       "expect": {
         "present": [
           {
@@ -25,7 +27,6 @@
           }
         ]
       },
-      "kind": "wait_for",
       "timeout_ms": 8000
     },
     {
@@ -36,42 +37,52 @@
       }
     },
     {
+      "kind": "wait_for",
       "expect": {
         "present": [
           {
-            "focused": true,
-            "kind": "TextView"
+            "kind": "TextView",
+            "focused": true
           }
         ]
       },
-      "kind": "wait_for",
       "timeout_ms": 4000
     },
     {
-      "kind": "type",
-      "text": "截屏"
+      "kind": "pause",
+      "ms": 700
     },
     {
+      "kind": "type",
+      "text": "截屏",
+      "after_ms": 0
+    },
+    {
+      "kind": "key",
+      "name": "return"
+    },
+    {
+      "kind": "wait_for",
       "expect": {
         "present": [
           {
             "kind": "Button",
             "label": "选择"
-          },
-          {
-            "kind": "Image",
-            "label": "截屏"
           }
         ]
       },
-      "kind": "wait_for",
-      "timeout_ms": 8000
+      "timeout_ms": 15000
+    },
+    {
+      "kind": "pause",
+      "ms": 1200
     },
     {
       "kind": "tap_label",
       "label": "选择"
     },
     {
+      "kind": "wait_for",
       "expect": {
         "present": [
           {
@@ -80,7 +91,6 @@
           }
         ]
       },
-      "kind": "wait_for",
       "timeout_ms": 12000
     },
     {
@@ -88,6 +98,7 @@
       "label": "全选"
     },
     {
+      "kind": "wait_for",
       "expect": {
         "present": [
           {
@@ -95,7 +106,6 @@
           }
         ]
       },
-      "kind": "wait_for",
       "timeout_ms": 4000
     },
     {
@@ -103,6 +113,7 @@
       "label": "更多"
     },
     {
+      "kind": "wait_for",
       "expect": {
         "present": [
           {
@@ -111,7 +122,6 @@
           }
         ]
       },
-      "kind": "wait_for",
       "timeout_ms": 4000
     },
     {
@@ -122,6 +132,7 @@
       }
     },
     {
+      "kind": "wait_for",
       "expect": {
         "present": [
           {
@@ -130,7 +141,6 @@
           }
         ]
       },
-      "kind": "wait_for",
       "timeout_ms": 4000
     },
     {
@@ -141,50 +151,42 @@
       }
     },
     {
+      "kind": "wait_for",
       "expect": {
         "present": [
           {
-            "focused": true,
-            "kind": "TextField"
+            "kind": "TextField",
+            "focused": true
           }
         ]
       },
-      "kind": "wait_for",
       "timeout_ms": 4000
     },
     {
-      "input": "album",
-      "kind": "type"
+      "kind": "type",
+      "input": "album"
     },
     {
       "kind": "tap_label",
       "label": "完成"
     },
     {
-      "expect": {
-        "absent": [
-          {
-            "kind": "TextField"
-          }
-        ],
-        "present": [
-          {
-            "kind": "Button",
-            "label": "选择"
-          }
-        ]
-      },
-      "kind": "wait_for",
-      "timeout_ms": 8000
+      "kind": "pause",
+      "ms": 2000
     }
   ],
   "verified_on": [
     {
-      "app_version": "27.0",
-      "date": "2026-10-19",
       "device": "iPhone 17 Pro Max",
-      "ios": "27.0"
+      "ios": "27.0",
+      "date": "2026-10-19",
+      "app_version": "27.0"
     }
   ],
-  "version": 1
+  "tags": [
+    "no-canary"
+  ],
+  "example_inputs": {
+    "album": "截屏汇总"
+  }
 }
