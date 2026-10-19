@@ -87,6 +87,39 @@
       "verified": false
     },
     {
+      "id": "photos/screenshots-to-album",
+      "path": "photos/screenshots-to-album.json",
+      "sha256": "6d387a3f45c1e866d859fbb9ac23924889d36e90748cc635b9ce01dd26429a37",
+      "name": "Put all screenshots into a new album",
+      "description": "照片：搜索「截屏」，全选结果并添加到新建相簿。只新建相簿，不删除任何照片。",
+      "app": "com.apple.mobileslideshow",
+      "category": "media",
+      "risk": "side_effect",
+      "locale": "zh-CN",
+      "inputs": [
+        "album"
+      ],
+      "steps": 22,
+      "verified": true
+    },
+    {
+      "id": "photos/search-to-album",
+      "path": "photos/search-to-album.json",
+      "sha256": "bbf0ec2e66038a204aa9a032d53fee03dc053162c857800aee4c68c42fb5c7b9",
+      "name": "Put photos matching a search into a new album",
+      "description": "照片：用自带搜索找出匹配的照片（如「截屏」「录屏」「食物」「东京」），全选结果并添加到新建相簿。只新建相簿，不删除任何照片。结果页可能很大：流程在点「完成」后停，不再读结果页。",
+      "app": "com.apple.mobileslideshow",
+      "category": "media",
+      "risk": "side_effect",
+      "locale": "zh-CN",
+      "inputs": [
+        "album",
+        "query"
+      ],
+      "steps": 22,
+      "verified": true
+    },
+    {
       "id": "settings/open",
       "path": "settings/open.json",
       "sha256": "736f6244e15e67d8f248b2b6ec9c2d7c0b82c353e61c97c624adbe358c7185c4",
@@ -155,6 +188,16 @@
       "aliases": [
         "Health",
         "健康"
+      ]
+    },
+    {
+      "id": "photos",
+      "bundle": "com.apple.mobileslideshow",
+      "name": "Photos",
+      "category": "media",
+      "aliases": [
+        "照片",
+        "Photos"
       ]
     },
     {

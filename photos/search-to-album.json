@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "name": "Put photos matching a search into a new album",
+  "description": "照片：用自带搜索找出匹配的照片（如「截屏」「录屏」「食物」「东京」），全选结果并添加到新建相簿。只新建相簿，不删除任何照片。结果页可能很大：流程在点「完成」后停，不再读结果页。",
+  "app": "com.apple.mobileslideshow",
+  "category": "media",
+  "risk": "side_effect",
+  "locale": "zh-CN",
+  "inputs": {
+    "query": {
+      "type": "string",
+      "description": "照片搜索词，例如 发票、录屏、猫、东京"
+    },
+    "album": {
+      "type": "string",
+      "description": "新相簿名称。不要含数字：中文拼音输入法会吞掉数字。"
+    }
+  },
+  "steps": [
+    {
+      "kind": "launch_app",
+      "bundle": "com.apple.mobileslideshow",
+      "fresh": true
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "TabBar"
+          }
+        ]
+      },
+      "timeout_ms": 8000
+    },
+    {
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Button",
+        "label": "搜索"
+      }
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "TextView",
+            "focused": true
+          }
+        ]
+      },
+      "timeout_ms": 4000
+    },
+    {
+      "kind": "pause",
+      "ms": 700
+    },
+    {
+      "kind": "type",
+      "input": "query",
+      "after_ms": 0
+    },
+    {
+      "kind": "key",
+      "name": "return"
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "选择"
+          }
+        ]
+      },
+      "timeout_ms": 15000
+    },
+    {
+      "kind": "pause",
+      "ms": 1200
+    },
+    {
+      "kind": "tap_label",
+      "label": "选择"
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "全选"
+          }
+        ]
+      },
+      "timeout_ms": 12000
+    },
+    {
+      "kind": "tap_label",
+      "label": "全选"
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "label": "取消全选"
+          }
+        ]
+      },
+      "timeout_ms": 4000
+    },
+    {
+      "kind": "tap_label",
+      "label": "更多"
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "添加到"
+          }
+        ]
+      },
+      "timeout_ms": 4000
+    },
+    {
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Button",
+        "label": "添加到"
+      }
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "新建相簿"
+          }
+        ]
+      },
+      "timeout_ms": 4000
+    },
+    {
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Button",
+        "label": "新建相簿"
+      }
+    },
+    {
+      "kind": "wait_for",
+      "expect": {
+        "present": [
+          {
+            "kind": "TextField",
+            "focused": true
+          }
+        ]
+      },
+      "timeout_ms": 4000
+    },
+    {
+      "kind": "type",
+      "input": "album"
+    },
+    {
+      "kind": "tap_label",
+      "label": "完成"
+    },
+    {
+      "kind": "pause",
+      "ms": 2000
+    }
+  ],
+  "tags": [
+    "no-canary"
+  ],
+  "example_inputs": {
+    "query": "录屏",
+    "album": "录屏汇总"
+  },
+  "verified_on": [
+    {
+      "device": "iPhone 17 Pro Max",
+      "ios": "27.0",
+      "date": "2026-10-19",
+      "app_version": "27.0"
+    }
+  ]
+}
