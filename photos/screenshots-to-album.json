@@ -1,0 +1,190 @@
+{
+  "app": "com.apple.mobileslideshow",
+  "category": "media",
+  "description": "照片：搜索「截屏」，全选结果并添加到新建相簿。只新建相簿，不删除任何照片。",
+  "inputs": {
+    "album": {
+      "description": "新相簿名称。不要含数字：中文拼音输入法会吞掉数字。",
+      "type": "string"
+    }
+  },
+  "locale": "zh-CN",
+  "name": "Put all screenshots into a new album",
+  "risk": "side_effect",
+  "steps": [
+    {
+      "bundle": "com.apple.mobileslideshow",
+      "fresh": true,
+      "kind": "launch_app"
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "kind": "TabBar"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 8000
+    },
+    {
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Button",
+        "label": "搜索"
+      }
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "focused": true,
+            "kind": "TextView"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 4000
+    },
+    {
+      "kind": "type",
+      "text": "截屏"
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "选择"
+          },
+          {
+            "kind": "Image",
+            "label": "截屏"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 8000
+    },
+    {
+      "kind": "tap_label",
+      "label": "选择"
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "全选"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 12000
+    },
+    {
+      "kind": "tap_label",
+      "label": "全选"
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "label": "取消全选"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 4000
+    },
+    {
+      "kind": "tap_label",
+      "label": "更多"
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "添加到"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 4000
+    },
+    {
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Button",
+        "label": "添加到"
+      }
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "kind": "Button",
+            "label": "新建相簿"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 4000
+    },
+    {
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Button",
+        "label": "新建相簿"
+      }
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "focused": true,
+            "kind": "TextField"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 4000
+    },
+    {
+      "input": "album",
+      "kind": "type"
+    },
+    {
+      "kind": "tap_label",
+      "label": "完成"
+    },
+    {
+      "expect": {
+        "absent": [
+          {
+            "kind": "TextField"
+          }
+        ],
+        "present": [
+          {
+            "kind": "Button",
+            "label": "选择"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 8000
+    }
+  ],
+  "verified_on": [
+    {
+      "app_version": "27.0",
+      "date": "2026-10-19",
+      "device": "iPhone 17 Pro Max",
+      "ios": "27.0"
+    }
+  ],
+  "version": 1
+}

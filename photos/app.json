@@ -1,0 +1,10 @@
+{
+  "aliases": [
+    "照片",
+    "Photos"
+  ],
+  "bundle": "com.apple.mobileslideshow",
+  "category": "media",
+  "id": "photos",
+  "name": "Photos"
+}
