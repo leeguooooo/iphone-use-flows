@@ -45,16 +45,15 @@
       "expect": {
         "present": [
           {
-            "kind": "TextView",
-            "focused": true
+            "identifier": "inputView"
           }
         ]
       },
-      "timeout_ms": 4000
+      "timeout_ms": 5000
     },
     {
       "kind": "pause",
-      "ms": 700
+      "ms": 500
     },
     {
       "kind": "type",
@@ -190,7 +189,7 @@
     {
       "device": "iPhone 17 Pro Max",
       "ios": "27.0",
-      "date": "2026-10-19",
+      "date": "2026-10-20",
       "app_version": "27.0"
     }
   ]

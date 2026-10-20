@@ -89,7 +89,7 @@
     {
       "id": "photos/screenshots-to-album",
       "path": "photos/screenshots-to-album.json",
-      "sha256": "6d387a3f45c1e866d859fbb9ac23924889d36e90748cc635b9ce01dd26429a37",
+      "sha256": "7e9a2fc823ace359e82f74c208c32c81c8122e40d6ad17e3116905d4d1f26d54",
       "name": "Put all screenshots into a new album",
       "description": "照片：搜索「截屏」，全选结果并添加到新建相簿。只新建相簿，不删除任何照片。",
       "app": "com.apple.mobileslideshow",
@@ -105,7 +105,7 @@
     {
       "id": "photos/search-to-album",
       "path": "photos/search-to-album.json",
-      "sha256": "bbf0ec2e66038a204aa9a032d53fee03dc053162c857800aee4c68c42fb5c7b9",
+      "sha256": "07fb2ce452c747cdf5bb27a45bcb3e8911cfb222d475e608f5eceb1179205c81",
       "name": "Put photos matching a search into a new album",
       "description": "照片：用自带搜索找出匹配的照片（如「截屏」「录屏」「食物」「东京」），全选结果并添加到新建相簿。只新建相簿，不删除任何照片。结果页可能很大：流程在点「完成」后停，不再读结果页。",
       "app": "com.apple.mobileslideshow",
