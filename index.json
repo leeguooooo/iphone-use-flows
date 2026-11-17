@@ -87,6 +87,20 @@
       "verified": false
     },
     {
+      "id": "pawlink/3d-demo-rotate",
+      "path": "pawlink/3d-demo-rotate.json",
+      "sha256": "40a066f840fa8e4c191a0320d513bdc835b0a479ef8b260d9fec2a32ba886f2c",
+      "name": "PawLink 3D 生成与旋转验收",
+      "description": "前置条件：PawLink 已打开宠物 3D 形象页，且用户已在系统图库里选好一张获授权的宠物照片。运行后触发本地固定柯基 GLB，单指拖动旋转并重置视角。照片只在本机预览，模型不会随照片变化，也不上传照片。",
+      "app": "com.pawlink.demo",
+      "category": "demo",
+      "risk": "navigation",
+      "locale": "zh-CN",
+      "inputs": [],
+      "steps": 6,
+      "verified": false
+    },
+    {
       "id": "photos/screenshots-to-album",
       "path": "photos/screenshots-to-album.json",
       "sha256": "7e9a2fc823ace359e82f74c208c32c81c8122e40d6ad17e3116905d4d1f26d54",
@@ -188,6 +202,15 @@
       "aliases": [
         "Health",
         "健康"
+      ]
+    },
+    {
+      "id": "pawlink",
+      "bundle": "com.pawlink.demo",
+      "name": "PawLink",
+      "category": "demo",
+      "aliases": [
+        "PawLink"
       ]
     },
     {

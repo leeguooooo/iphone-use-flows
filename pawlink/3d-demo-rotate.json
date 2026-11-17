@@ -1,0 +1,63 @@
+{
+  "app": "com.pawlink.demo",
+  "category": "demo",
+  "description": "前置条件：PawLink 已打开宠物 3D 形象页，且用户已在系统图库里选好一张获授权的宠物照片。运行后触发本地固定柯基 GLB，单指拖动旋转并重置视角。照片只在本机预览，模型不会随照片变化，也不上传照片。",
+  "locale": "zh-CN",
+  "name": "PawLink 3D 生成与旋转验收",
+  "risk": "navigation",
+  "steps": [
+    {
+      "expect": {
+        "present": [
+          {
+            "label": "已选择的宠物照片"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 7000
+    },
+    {
+      "kind": "tap_label",
+      "label": "生成 3D 形象"
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "label": "重置视角"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 7000
+    },
+    {
+      "duration_ms": 800,
+      "kind": "drag",
+      "x1": 0.25,
+      "x2": 0.75,
+      "y1": 0.4,
+      "y2": 0.4
+    },
+    {
+      "expect": {
+        "present": [
+          {
+            "label": "重置视角"
+          }
+        ]
+      },
+      "kind": "wait_for",
+      "timeout_ms": 7000
+    },
+    {
+      "kind": "tap_locator",
+      "locator": {
+        "kind": "Button",
+        "label": "重置视角"
+      }
+    }
+  ],
+  "version": 1
+}

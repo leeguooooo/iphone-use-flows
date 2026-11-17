@@ -1,0 +1,9 @@
+{
+  "aliases": [
+    "PawLink"
+  ],
+  "bundle": "com.pawlink.demo",
+  "category": "demo",
+  "id": "pawlink",
+  "name": "PawLink"
+}
